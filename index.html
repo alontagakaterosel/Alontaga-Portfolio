@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kate Rosel B. Alontaga - Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Dots Background */
+        .dots-bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            background-image: radial-gradient(circle, rgba(255, 255, 255, 0.15) 2px, transparent 2px);
+            background-size: 40px 40px;
+            animation: dotsMove 20s linear infinite;
+        }
+
+        @keyframes dotsMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 40px 40px; }
+        }
+
+        /* Floating Shapes */
+        .shapes-container {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.15;
+            animation: shapeFloat 25s infinite ease-in-out;
+        }
+
+        .circle {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff6b9d, #c471ed);
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .triangle {
+            width: 0;
+            height: 0;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            border-bottom: 260px solid #feca57;
+            top: 60%;
+            right: 10%;
+            animation-delay: 5s;
+        }
+
+        .square {
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            transform: rotate(45deg);
+            bottom: 15%;
+            left: 15%;
+            animation-delay: 10s;
+        }
+
+        @keyframes shapeFloat {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(50px, -80px) rotate(90deg);
+            }
+            50% {
+                transform: translate(-30px, 60px) rotate(180deg);
+            }
+            75% {
+                transform: translate(70px, 40px) rotate(270deg);
+            }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(25px);
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            border-radius: 60px;
+            padding: 20px 40px;
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            animation: navSlide 1s ease-out;
+        }
+
+        @keyframes navSlide {
+            from {
+                opacity: 0;
+                transform: translateY(-80px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05em;
+            padding: 12px 25px;
+            border-radius: 40px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 70%;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+        }
+
+        .profile-wrapper {
+            position: relative;
+            margin-bottom: 50px;
+            animation: profileZoom 1.2s ease-out;
+        }
+
+        @keyframes profileZoom {
+            from {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .profile-outer {
+            width: 220px;
+            height: 220px;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .profile-badge {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+            border-radius: 35% 65% 70% 30% / 40% 50% 50% 60%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5em;
+            font-weight: 900;
+            color: white;
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.5);
+            animation: morphShape 8s ease-in-out infinite;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes morphShape {
+            0%, 100% {
+                border-radius: 35% 65% 70% 30% / 40% 50% 50% 60%;
+            }
+            25% {
+                border-radius: 70% 30% 50% 50% / 30% 60% 40% 70%;
+            }
+            50% {
+                border-radius: 50% 50% 30% 70% / 60% 40% 60% 40%;
+            }
+            75% {
+                border-radius: 30% 70% 70% 30% / 50% 30% 70% 50%;
+            }
+        }
+
+        .profile-ring {
+            position: absolute;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            animation: ringRotate 10s linear infinite;
+        }
+
+        .ring-1 {
+            width: 250px;
+            height: 250px;
+            top: -15px;
+            left: -15px;
+            border-radius: 45% 55% 60% 40% / 50% 60% 40% 50%;
+        }
+
+        .ring-2 {
+            width: 280px;
+            height: 280px;
+            top: -30px;
+            left: -30px;
+            border-radius: 60% 40% 50% 50% / 40% 50% 50% 60%;
+            animation-duration: 15s;
+            animation-direction: reverse;
+        }
+
+        @keyframes ringRotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .hero-content {
+            max-width: 1000px;
+        }
+
+        .hero h1 {
+            font-size: 4.5em;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+            animation: titleFade 1.2s ease-out;
+        }
+
+        @keyframes titleFade {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero .subtitle {
+            font-size: 1.8em;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 12px;
+            font-weight: 600;
+            animation: titleFade 1.2s ease-out 0.2s both;
+        }
+
+        .hero .year {
+            font-size: 1.3em;
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 400;
+            animation: titleFade 1.2s ease-out 0.4s both;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 90px 20px;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 3.5em;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: white;
+            border-radius: 2px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .section-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+
+        /* Card Styling */
+        .card {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            padding: 50px 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+            transform: rotate(45deg);
+            animation: cardShine 4s infinite;
+        }
+
+        @keyframes cardShine {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
+        }
+
+        .card:hover {
+            transform: translateY(-12px);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Career Objective */
+        .objective-list {
+            list-style: none;
+            font-size: 1.3em;
+            line-height: 2;
+            color: rgba(255, 255, 255, 0.95);
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .objective-list li {
+            margin-bottom: 20px;
+            padding-left: 40px;
+            position: relative;
+        }
+
+        .objective-list li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: white;
+            font-size: 1.3em;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto 50px;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 35px 30px;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        .skill-card h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: white;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-card h3::before {
+            content: '●';
+            font-size: 1.2em;
+        }
+
+        .skill-category {
+            margin-bottom: 40px;
+        }
+
+        .skill-category h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: white;
+            font-weight: 800;
+            text-align: center;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 35px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            padding: 45px 40px;
+            transition: all 0.4s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-12px);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+        }
+
+        .project-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+        }
+
+        .project-card h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: white;
+            font-weight: 800;
+        }
+
+        .project-card p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.15em;
+            line-height: 1.8;
+        }
+
+        /* Contact Grid */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            padding: 45px 35px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        .contact-icon {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 25px;
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            animation: iconPulse 2.5s ease-in-out infinite;
+        }
+
+        @keyframes iconPulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+            }
+            50% {
+                transform: scale(1.08);
+                box-shadow: 0 0 50px rgba(255, 255, 255, 0.5);
+            }
+        }
+
+        .contact-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: white;
+            font-weight: 700;
+        }
+
+        .contact-card p {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.1em;
+            word-break: break-word;
+        }
+
+        .contact-card a {
+            color: rgba(255, 255, 255, 0.95);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            color: white;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            margin-top: 80px;
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1em;
+            margin-bottom: 12px;
+        }
+
+        .footer-highlight {
+            font-weight: 800;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.8em;
+            }
+
+            .hero .subtitle {
+                font-size: 1.4em;
+            }
+
+            .section-title {
+                font-size: 2.5em;
+            }
+
+            .skills-grid,
+            .contact-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                gap: 15px;
+                padding: 18px 30px;
+            }
+
+            .profile-outer {
+                width: 170px;
+                height: 170px;
+            }
+
+            .profile-badge {
+                font-size: 4em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="dots-bg"></div>
+    
+    <div class="shapes-container">
+        <div class="shape circle"></div>
+        <div class="shape triangle"></div>
+        <div class="shape square"></div>
+    </div>
+
+    <div class="container">
+        <!-- Navigation -->
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#objective">Objective</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <!-- Hero Section -->
+        <div class="hero" id="home">
+            <div class="profile-wrapper">
+                <div class="profile-outer">
+                    <div class="profile-ring ring-1"></div>
+                    <div class="profile-ring ring-2"></div>
+                    <div class="profile-badge">KA</div>
+                </div>
+            </div>
+            <div class="hero-content">
+                <h1>Kate Rosel B. Alontaga</h1>
+                <p class="subtitle">Bachelor of Science in Information Technology</p>
+                <p class="year">3rd Year – BSIT 3 NORTHEAST</p>
+            </div>
+        </div>
+
+        <!-- Career Objective -->
+        <section id="objective">
+            <div class="section-header">
+                <h2 class="section-title">Career Objectives</h2>
+                <p class="section-subtitle">My Professional Goals & Vision</p>
+            </div>
+            <div class="card">
+                <ul class="objective-list">
+                    <li>To develop my problem-solving skills and become more confident in handling technical tasks and to enhance my skills</li>
+                    <li>To pursue a career in Information Technology where I can continuously develop my skills and contribute to organizational growth</li>
+                    <li>To become a competent professional through dedication, continuous learning, and hands-on experience</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <div class="section-header">
+                <h2 class="section-title">Skills & Expertise</h2>
+                <p class="section-subtitle">Core Competencies & Technical Abilities</p>
+            </div>
+
+            <div class="skill-category">
+                <h2>Core Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h3>Problem-solving & Analytical Thinking</h3>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Teamwork & Communication</h3>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Time Management & Adaptability</h3>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Leadership Skills</h3>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Willingness to Learn</h3>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Creativity</h3>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Responsibility & Accountability</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h2>Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h3>Microsoft Office Suite</h3>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Canva Design</h3>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Basic Video Editing</h3>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Technical Documentation</h3>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Research Skills</h3>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Presentation Skills</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <div class="section-header">
+                <h2 class="section-title">Projects</h2>
+                <p class="section-subtitle">My Work & Achievements</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-icon">🌐</div>
+                    <h3>Digital Barangay Service Request Management System</h3>
+                    <p>A web-based system that allows residents to submit service requests online and helps barangay officials manage and track requests efficiently.</p>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">📱</div>
+                    <h3>Mobile Application</h3>
+                    <p>Developed a mobile application to provide innovative solutions for users with a focus on functionality and user experience.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="section-header">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Let's Connect</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email</h3>
+                    <p><a href="mailto:alontagakaterosel@gmail.com">alontagakaterosel@gmail.com</a></p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📱</div>
+                    <h3>Phone</h3>
+                    <p><a href="tel:09388928154">0938 892 8154</a></p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h3>Address</h3>
+                    <p>Kaongkod, Madridejos, Cebu</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 <span class="footer-highlight">Kate Rosel B. Alontaga</span>. All Rights Reserved.</p>
+        <p>Aspiring IT Professional | <span class="footer-highlight">Dedicated</span> to Excellence and Innovation</p>
+    </footer>
+</body>
+</html>
